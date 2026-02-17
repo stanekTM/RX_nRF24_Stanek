@@ -38,20 +38,20 @@ The code is Arduino.
 
 ### Arduino pins
 ```
-D0  - servo 1              ATmega328PB only!
-D1             - motor 2/1 ATmega328PB only!
-D2  - servo 1  - motor 2/2 ATmega328PB only!
-D3  - servo 2  - motor 1/1
-D4  - servo 3
-D5  - servo 4
-D6  - servo 5
-D7  - servo 6
-D8  - servo 7
-D9  - servo 8  - motor 2/1
-D10 - servo 9  - motor 2/2
-D11 - servo 10 - motor 1/2
-D12 - servo 11
-D13 - servo 12
+D0  - servo    (1) (1)
+D1  - servo    (2) motor 2/1 ATmega328PB only!
+D2  - servo 1  (3) motor 2/2 ATmega328PB only!
+D3  - servo 2  motor 1/1
+D4  - servo 3  (4) (2)
+D5  - servo 4  (5) (3)
+D6  - servo 5  (6) (4)
+D7  - servo 6  (7) (5)
+D8  - servo 7  (8) (6)
+D9  - servo 8  (9) (7) motor 2/1
+D10 - servo 9  (10)(8) motor 2/2
+D11 - servo 10 motor 1/2
+D12 - servo 11 (11)(9)
+D13 - servo 12 (12)(10)
 
 A6  - LED
 A7  - telemetry analog input RX battery
