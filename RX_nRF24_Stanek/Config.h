@@ -50,10 +50,10 @@
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
 //#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
-#define MOTOR1_2              // Buggy 1:32 2ch
+//#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
 //#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
-//#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
+#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
 // Glider Let L-13 Blanik 4ch
@@ -152,7 +152,7 @@
 #endif
 
 //*********************************************************************************************************************
-// The number of RC channels of the receiver must match the RC channels of the transmitter
+// Number of RC motor channels
 //*********************************************************************************************************************
 #if defined(MOTOR1_2)
   #define MOTOR_CHANNELS  2
@@ -176,7 +176,7 @@
 #endif
 
 //*********************************************************************************************************************
-// If only a motor output is available, there are no servo channels available
+// If there is no output to servos or motors, set RC channels to 0
 //*********************************************************************************************************************
 #ifndef SERVO_CHANNELS
   #define SERVO_CHANNELS  0
