@@ -16,7 +16,7 @@ void motor_setup()
   set_PWM_prescaler(pins_motor2[0], PRESCALER_TIMER1_9_10);
 #endif
 
-#if defined(MOTOR2PB)
+#if defined(MOTOR2PB) // ATmega328PB
   pinMode(pins_motor2PB[0], OUTPUT);
   pinMode(pins_motor2PB[1], OUTPUT);
   set_PWM_prescaler(pins_motor2PB[0], PRESCALER_TIMER4_1_2);

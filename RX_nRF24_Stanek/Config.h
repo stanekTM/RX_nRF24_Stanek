@@ -22,9 +22,9 @@
   
   Servo and motor output selection
   SERVO_12CH             Separate servo outputs (2 to 12 servo channels)
-  MOTOR1, MOTOR2         Output for motor 1 and 2
+  MOTOR1_2               Output for motor 1 and 2
   MIX_TANK_MOTOR1_2      Mixed "tank-arcade" output for motor 1 and 2
-  SERVO_10CH_MOTOR1      Servos and motor 1 output (1 to 10 servo channels)
+  SERVO_12CH_MOTOR1      Servos and motor 1 output (1 to 12 servo channels)
   SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Servos, motor 1 and motor 2 output (1 to 10 servo channels)
   
   Setting the number of servo channels
@@ -49,49 +49,39 @@
 //*********************************************************************************************************************
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
-//#define LET_L13_BLANIK
-//#define BUGGY_1_32
-//#define EACHINE_MONSTER
-#define FERARI_F40
-//#define TANK_T34_PB
+//#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
+#define MOTOR1_2              // Buggy 1:32 2ch
+//#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
+//#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
+//#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
-//****************************
+//********************************
 // Glider Let L-13 Blanik 4ch
-//****************************
-#if defined(LET_L13_BLANIK)
-  
+//********************************
+#if defined(SERVO_12CH)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
-  
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  
-  #define SERVO_12CH
-  
   #define SERVO_CHANNELS  4
 #endif
 
-//*********************
+//********************************
 // Buggy 1:32 2ch
-//*********************
-#if defined(BUGGY_1_32)
-  
+//********************************
+#if defined(MOTOR1_2)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
-  
+  //#define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  
-  #define PIN_LED  2
-  
-  #define MOTOR1
+  // Motor 1
   #define PWM_122HZ_TIMER2_3_11
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  0
-  
-  #define MOTOR2
+  // Motor 2
   #define PWM_122HZ_TIMER1_9_10
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
@@ -99,25 +89,21 @@
   #define BRAKE_MOTOR2  0
 #endif
 
-//**************************
+//********************************
 // Eachine Monster 2ch
-//**************************
-#if defined(EACHINE_MONSTER)
-  
+//********************************
+#if defined(MIX_TANK_MOTOR1_2)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
-  
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  
-  #define MIX_TANK_MOTOR1_2
-  
+  // Motor 1
   #define PWM_122HZ_TIMER2_3_11
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  255
-  
+  // Motor 2
   #define PWM_122HZ_TIMER1_9_10
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
@@ -125,21 +111,16 @@
   #define BRAKE_MOTOR2  255
 #endif
 
-//*********************
+//********************************
 // Ferari F-40 2ch
-//*********************
-#if defined(FERARI_F40)
-  
+//********************************
+#if defined(SERVO_12CH_MOTOR1)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
-  
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  
-  #define SERVO_10CH_MOTOR1
-  
   #define SERVO_CHANNELS  1
-  
+  // Motor 1
   #define PWM_122HZ_TIMER2_3_11
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
@@ -147,27 +128,22 @@
   #define BRAKE_MOTOR1  255
 #endif
 
-//*******************
+//********************************
 // Tank T-34/85 3ch
-//*******************
-#if defined(TANK_T34_PB)
-  
+//********************************
+#if defined(SERVO_10CH_MOTOR1_2PB)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
-  
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  
-  #define SERVO_10CH_MOTOR1_2PB
-  
   #define SERVO_CHANNELS  1
-  
+  // Motor 1
   #define PWM_122HZ_TIMER2_3_11
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  0
-  
+  // Motor 2 ATmega328PB
   #define PWM_122HZ_TIMER4_1_2
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
@@ -178,24 +154,36 @@
 //*********************************************************************************************************************
 // The number of RC channels of the receiver must match the RC channels of the transmitter
 //*********************************************************************************************************************
-#if defined(MOTOR1) || defined(MOTOR2) || defined(MOTOR2PB) || defined(MIX_TANK_MOTOR1_2)
-  #define MOTOR_CHANNELS  2 // Min/max. 2 channels
-  #define SERVO_CHANNELS  0 // No servo channel. Need for definition
+#if defined(MOTOR1_2)
+  #define MOTOR_CHANNELS  2
+  #define MOTOR1
+  #define MOTOR2
 #endif
 
-#if defined(SERVO_12CH)
-  #define MOTOR_CHANNELS  0 // No motor channel. Need for definition
+#if defined(MIX_TANK_MOTOR1_2)
+  #define MOTOR_CHANNELS  2
 #endif
 
-#if defined(SERVO_10CH_MOTOR1)
-  #define MOTOR_CHANNELS  1 // Min. 1 channel
+#if defined(SERVO_12CH_MOTOR1)
+  #define MOTOR_CHANNELS  1
   #define MOTOR1
 #endif
 
 #if defined(SERVO_10CH_MOTOR1_2PB)
-  #define MOTOR_CHANNELS  2 // Min. 2 channels
+  #define MOTOR_CHANNELS  2
   #define MOTOR1
   #define MOTOR2PB
+#endif
+
+//*********************************************************************************************************************
+// If only a motor output is available, there are no servo channels available
+//*********************************************************************************************************************
+#ifndef SERVO_CHANNELS
+  #define SERVO_CHANNELS  0
+#endif
+
+#ifndef MOTOR_CHANNELS
+  #define MOTOR_CHANNELS  0
 #endif
 
 //*********************************************************************************************************************
