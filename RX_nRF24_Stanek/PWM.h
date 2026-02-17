@@ -95,11 +95,27 @@
 //*********************************************************************************************************************
 // Pin D0(RX) and specific pin PD2(2) is not paired (328PB 16-bit Timer/Counter 3)
 //*********************************************************************************************************************
-//#define PWM_30HZ_TIMER3_0     1024
-//#define PWM_122HZ_TIMER3_0    256
-//#define PWM_488HZ_TIMER3_0_DEFAULT  64
-//#define PWM_3906HZ_TIMER3_0   8
-//#define PWM_31250HZ_TIMER3_0  1
+//#define PWM_30HZ_TIMER3_0
+//#define PWM_122HZ_TIMER3_0
+//#define PWM_488HZ_TIMER3_0_DEFAULT
+//#define PWM_3906HZ_TIMER3_0
+//#define PWM_31250HZ_TIMER3_0
+
+#if defined(PWM_30HZ_TIMER3_0)
+  #define PRESCALER_TIMER3_0  1024
+#endif
+#if defined(PWM_122HZ_TIMER3_0)
+  #define PRESCALER_TIMER3_0  256
+#endif
+#if defined(PWM_488HZ_TIMER3_0_DEFAULT)
+  #define PRESCALER_TIMER3_0  64
+#endif
+#if defined(PWM_3906HZ_TIMER3_0)
+  #define PRESCALER_TIMER3_0  8
+#endif
+#if defined(PWM_31250HZ_TIMER3_0)
+  #define PRESCALER_TIMER3_0  1
+#endif
 
 //*********************************************************************************************************************
 // Pin PD1(1)TX and specific pin PD2(2) (328PB 16-bit Timer/Counter 4)
