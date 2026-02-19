@@ -93,7 +93,7 @@
 #endif
 
 //*********************************************************************************************************************
-// Pin D0(RX) and specific pin PD2(2) is not paired (328PB 16-bit Timer/Counter 3)
+// Pin D0(RX) and specific pin PD2(2) is not paired (ATmega328PB 16-bit Timer/Counter 3)
 //*********************************************************************************************************************
 //#define PWM_30HZ_TIMER3_0
 //#define PWM_122HZ_TIMER3_0
@@ -118,7 +118,7 @@
 #endif
 
 //*********************************************************************************************************************
-// Pin PD1(1)TX and specific pin PD2(2) (328PB 16-bit Timer/Counter 4)
+// Pin PD1(1)TX and specific pin PD2(2) (ATmega328PB 16-bit Timer/Counter 4)
 //*********************************************************************************************************************
 //#define PWM_30HZ_TIMER4_1_2
 //#define PWM_122HZ_TIMER4_1_2
@@ -151,7 +151,7 @@ void set_PWM_prescaler(uint8_t pin, uint16_t prescale)
   
   if (pin == 0 || pin == 1 || pin == 2 || pin == 5 || pin == 6 || pin == 9 || pin == 10)
   {
-    switch (prescale) // 8-bit Timer/Counter 0, 16-bit Timer/Counter 1, 328PB 16-bit Timer/Counter 3, 328PB 16-bit Timer/Counter 4
+    switch (prescale) // 8-bit Timer/Counter 0, 16-bit Timer/Counter 1, ATmega328PB 16-bit Timer/Counter 3, ATmega328PB 16-bit Timer/Counter 4
     {
       case    1: mode = 0b001; break;
       case    8: mode = 0b010; break;
@@ -189,11 +189,11 @@ void set_PWM_prescaler(uint8_t pin, uint16_t prescale)
     TCCR2B = (TCCR2B & 0b11111000) | mode;
   }
 #ifdef __AVR_ATmega328PB__
-  else if (pin == 0 || pin == 2) // 328PB 16-bit Timer/Counter 3, PD0(0)RX and specific pin PD2(2) is not paired
+  else if (pin == 0 || pin == 2) // ATmega328PB 16-bit Timer/Counter 3, PD0(0)RX and specific pin PD2(2) is not paired
   {
     TCCR3B = (TCCR3B & 0b11111000) | mode;
   }
-  else if (pin == 1 || pin == 2) // 328PB 16-bit Timer/Counter 4, PD1(1)TX and specific pin PD2(2)
+  else if (pin == 1 || pin == 2) // ATmega328PB 16-bit Timer/Counter 4, PD1(1)TX and specific pin PD2(2)
   {
     TCCR4B = (TCCR4B & 0b11111000) | mode;
   }
