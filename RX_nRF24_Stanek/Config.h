@@ -31,7 +31,7 @@
   SERVO_CHANNELS  1 to 12
   
   Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM" file
-  PWM_30HZ --> PWM_62500HZ
+  30HZ to 62500HZ
   
   Setting the motor reaction point. Prevents initial rotor magnetic resistance
   REACTION_MOTOR1, REACTION_MOTOR2  0 to 255
@@ -50,10 +50,10 @@
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
 //#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
-//#define MOTOR1_2              // Buggy 1:32 2ch
+#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
 //#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
-#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
+//#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
 // Glider Let L-13 Blanik 4ch
@@ -72,17 +72,17 @@
 #if defined(MOTOR1_2)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
-  //#define PIN_LED  2
+  #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
   // Motor 1
-  #define PWM_122HZ_TIMER2_3_11
+  #define TIMER2_488HZ_DEFAULT
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  0
   // Motor 2
-  #define PWM_122HZ_TIMER1_9_10
+  #define TIMER1_488HZ_DEFAULT
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
   #define MAX_REVERSE_MOTOR2  255
@@ -98,13 +98,13 @@
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
   // Motor 1
-  #define PWM_122HZ_TIMER2_3_11
+  #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  255
   // Motor 2
-  #define PWM_122HZ_TIMER1_9_10
+  #define TIMER1_122HZ
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
   #define MAX_REVERSE_MOTOR2  255
@@ -121,7 +121,7 @@
   #define MONITORED_VOLTAGE  3.45
   #define SERVO_CHANNELS  1
   // Motor 1
-  #define PWM_122HZ_TIMER2_3_11
+  #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
@@ -138,13 +138,13 @@
   #define MONITORED_VOLTAGE  3.45
   #define SERVO_CHANNELS  1
   // Motor 1
-  #define PWM_122HZ_TIMER2_3_11
+  #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  0
   // Motor 2 ATmega328PB
-  #define PWM_122HZ_TIMER4_1_2
+  #define TIMER4_122HZ
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
   #define MAX_REVERSE_MOTOR2  255
