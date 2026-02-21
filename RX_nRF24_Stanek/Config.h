@@ -22,10 +22,10 @@
   
   Servo and motor output selection
   SERVO_12CH             Separate servo outputs (2 to 12 servo channels)
-  MOTOR1_2               Output for motor 1 and 2
-  MIX_TANK_MOTOR1_2      Mixed "tank-arcade" output for motor 1 and 2
-  SERVO_12CH_MOTOR1      Servos and motor 1 output (1 to 12 servo channels)
-  SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Servos, motor 1 and motor 2 output (1 to 10 servo channels)
+  MOTOR1_2               Motor output 1 and 2
+  MIX_TANK_MOTOR1_2      "Tank-arcade" mix of motor 1 and 2
+  SERVO_12CH_MOTOR1      Motor 1 and servo output (1 to 12 servo channels)
+  SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (1 to 10 servo channels)
   
   Setting the number of servo channels
   SERVO_CHANNELS  1 to 12
