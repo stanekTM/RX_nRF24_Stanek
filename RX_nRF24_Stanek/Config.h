@@ -11,7 +11,7 @@
   Setting a unique address (5 bytes number or character). It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
   const byte address[6] = "jirka";
   
-  RF communication channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
+  RF channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
   RF_CHANNEL  0 to 125 (2.4GHz to 2.525GHz)
   
   Setting the maximum nominal battery voltage

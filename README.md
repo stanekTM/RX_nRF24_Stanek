@@ -20,7 +20,7 @@ The code is Arduino.
 
 ### RC receiver configuration manual in the "Config.h" file
 * Setting a unique address. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
-* RF communication channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
+* RF channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
 * Setting the maximum nominal battery voltage
 * Setting the minimum battery voltage for alarm
 * Servo and motor output selection
