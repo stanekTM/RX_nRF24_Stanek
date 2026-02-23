@@ -1,6 +1,6 @@
 
-#ifndef __Pins__
-#define __Pins__
+#ifndef __Pins_h__
+#define __Pins_h__
 
 #include <Arduino.h>
 #include "Config.h"
@@ -91,5 +91,5 @@
 //          MOSI     A3
 //          MISO     A4
 
-#endif
+#endif // End __Pins_h__
  

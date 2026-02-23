@@ -1,6 +1,6 @@
 
-#ifndef __Config__
-#define __Config__
+#ifndef __Config_h__
+#define __Config_h__
 
 #include <Arduino.h>
 
@@ -220,5 +220,5 @@ unsigned long rf_timeout = 0;
 #define MID_CONTROL_VAL  1500
 #define MAX_CONTROL_VAL  2000
 
-#endif // End __Config__
+#endif // End __Config_h__
  
