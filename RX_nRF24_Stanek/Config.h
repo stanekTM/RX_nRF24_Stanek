@@ -188,9 +188,9 @@
 #endif
 
 //*********************************************************************************************************************
-// Radio data config (max. 32 bytes)
+// Config radio
 //*********************************************************************************************************************
-// Received data array
+// Received data array (max. 32 bytes)
 const byte rc_channels = SERVO_CHANNELS + MOTOR_CHANNELS;
 
 unsigned int rc_packet[rc_channels] = {1500};
