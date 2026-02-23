@@ -10,9 +10,9 @@ The code is Arduino.
 ### Works with RC transmitters
 * [**TX_nRF24_2ch_OLED**](https://github.com/stanekTM/TX_nRF24_2ch_OLED)
 * [**TX_nRF24_Xch_LED**](https://github.com/stanekTM/TX_nRF24_Xch_LED)
-* [**OpenAVRc**](https://github.com/Ingwie/OpenAVRc_Dev)   <a href="https://github.com/Ingwie/OpenAVRc_Dev"><img src="documents/openavrc.png" width="260"></a>
+* [**OpenAVRc**](https://github.com/Ingwie/OpenAVRc_Dev)   <a href="https://github.com/Ingwie/OpenAVRc_Dev"><img width="260" src="documents/openavrc.png"></a>
 
-* [**Multiprotocol TX**](https://github.com/stanekTM/TX_FW_Multi_Stanek) from my fork    <a href="https://github.com/stanekTM/TX_FW_Multi_Stanek"><img src="documents/opentx_multi_tx.jpg" width="260"></a>
+* [**Multiprotocol TX**](https://github.com/stanekTM/TX_FW_Multi_Stanek) from my fork    <a href="https://github.com/stanekTM/TX_FW_Multi_Stanek"><img width="260" src="documents/opentx_multi_tx.jpg"></a>
 
 ### RC receiver specification
 * Operating Voltage: 3.3V - 6.0V (target typically 4.2V, 1S LiPo)
@@ -65,12 +65,12 @@ A3  - MOSI
 A4  - MISO
 ```
 ### Micro RC receiver
-<a href="https://youtu.be/E0pgMNPuYU4"><img src="documents/micro_rx_youtube.PNG" width="830"></a>
-<img src="documents/3micro_rx_top.jpg" width="415"><img src="documents/4micro_rx_bottom.jpg" width="415">
-<img src="documents/1micro_rx_schema.png" width="830"><img src="documents/5micro_rx_opentx.jpg" width="830">
+<a href="https://youtu.be/E0pgMNPuYU4"><img width="830" src="documents/micro_rx_youtube.PNG"></a>
+<img width="415" src="documents/3micro_rx_top.jpg"><img width="415" src="documents/4micro_rx_bottom.jpg">
+<img width="830" src="documents/1micro_rx_schema.png"><img width="830" src="documents/5micro_rx_opentx.jpg">
 
 ### RC receiver with tank-arcade mix
-<a href="https://youtu.be/AYgY5UkVnUM"><img src="documents/rx_mix_tank_arcade_youtube.PNG" width="830"></a>
+<a href="https://youtu.be/AYgY5UkVnUM"><img width="830" src="documents/rx_mix_tank_arcade_youtube.PNG"></a>
 
 ### RC receiver with servo
-<a href="https://youtu.be/jPN5YdQ-3K0"><img src="documents/rx_servo_motor_youtube.PNG" width="830"></a>
+<a href="https://youtu.be/jPN5YdQ-3K0"><img width="830" src="documents/rx_servo_motor_youtube.PNG"></a>
