@@ -50,8 +50,8 @@
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
 //#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
-#define MOTOR1_2              // Buggy 1:32 2ch
-//#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
+//#define MOTOR1_2              // Buggy 1:32 2ch
+#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
 //#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
 //#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
@@ -95,6 +95,7 @@
 #if defined(MIX_TANK_MOTOR1_2)
   const byte address[6] = "jirka";
   #define RF_CHANNEL  76
+  #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
   // Motor 1
@@ -102,13 +103,13 @@
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
-  #define BRAKE_MOTOR1  255
+  #define BRAKE_MOTOR1  0
   // Motor 2
   #define TIMER1_122HZ
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
   #define MAX_REVERSE_MOTOR2  255
-  #define BRAKE_MOTOR2  255
+  #define BRAKE_MOTOR2  0
 #endif
 
 //********************************
