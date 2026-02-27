@@ -74,6 +74,9 @@
   const byte pins_servo[10] = {0, 4, 5, 6, 7, 8, 9, 10, 12, 13};
 #endif
 
+// Save fail-safe
+#define PIN_FAIL_SAFE  A5
+
 // LED alarm
 #ifndef PIN_LED
   #define PIN_LED    A6

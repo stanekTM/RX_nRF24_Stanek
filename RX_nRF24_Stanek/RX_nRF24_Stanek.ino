@@ -20,6 +20,7 @@
 //#include <printf.h>  // Print the radio debug info
 #include <DigitalIO.h> // v1.0.1
 #include <Servo.h>     // v1.2.2
+#include <EEPROM.h>
 #include "PWM.h"
 #include "Pins.h"
 #include "Config.h"
@@ -34,10 +35,12 @@ void setup()
   
   radio_setup();
   
+  load_fail_safe();
+  
   servo_setup();
   motor_setup();
   
-  fail_safe();
+  pinMode(PIN_FAIL_SAFE, INPUT_PULLUP);
   
   pinMode(PIN_LED, OUTPUT);
   pinMode(PIN_BATTERY, INPUT);
@@ -57,6 +60,9 @@ void loop()
   motor_control();
   
   batt_monitoring();
+  
+  save_fail_safe();
+  
   LED_mode();
 }
  

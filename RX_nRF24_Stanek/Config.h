@@ -9,7 +9,7 @@
   RC receiver configuration manual. See examples below "Custom configuration"
   *****************************************************************************************************************************************
   Setting a unique address (5 bytes number or character). It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
-  const byte address[6] = "jirka";
+  const byte RF_address[6] = "jirka";
   
   RF channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
   RF_CHANNEL  0 to 125 (2.4GHz to 2.525GHz)
@@ -44,14 +44,16 @@
   
   Pin settings specific to my PCB.
   PIN_LED
+  
+  Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral)
 */
 
 //*********************************************************************************************************************
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
 //#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
-//#define MOTOR1_2              // Buggy 1:32 2ch
-#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
+#define MOTOR1_2              // Buggy 1:32 2ch
+//#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
 //#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
 //#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
@@ -59,7 +61,7 @@
 // Glider Let L-13 Blanik 4ch
 //********************************
 #if defined(SERVO_12CH)
-  const byte address[6] = "jirka";
+  const byte RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
@@ -70,7 +72,7 @@
 // Buggy 1:32 2ch
 //********************************
 #if defined(MOTOR1_2)
-  const byte address[6] = "jirka";
+  const byte RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
@@ -93,7 +95,7 @@
 // Eachine Monster 2ch
 //********************************
 #if defined(MIX_TANK_MOTOR1_2)
-  const byte address[6] = "jirka";
+  const byte RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
@@ -103,20 +105,37 @@
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
-  #define BRAKE_MOTOR1  0
+  #define BRAKE_MOTOR1  255
   // Motor 2
   #define TIMER1_122HZ
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
   #define MAX_REVERSE_MOTOR2  255
-  #define BRAKE_MOTOR2  0
+  #define BRAKE_MOTOR2  255
 #endif
 
 //********************************
 // Ferari F-40 2ch
 //********************************
 #if defined(SERVO_12CH_MOTOR1)
-  const byte address[6] = "jirka";
+  const byte RF_address[6] = "jirka";
+  #define RF_CHANNEL  76
+  #define BATTERY_VOLTAGE  4.2
+  #define MONITORED_VOLTAGE  3.45
+  #define SERVO_CHANNELS  1
+  // Motor 1
+  #define TIMER2_122HZ
+  #define REACTION_MOTOR1  0
+  #define MAX_FORWARD_MOTOR1  255
+  #define MAX_REVERSE_MOTOR1  255
+  #define BRAKE_MOTOR1  0
+#endif
+
+//********************************
+// Tank T-34/85 3ch
+//********************************
+#if defined(SERVO_10CH_MOTOR1_2PB)
+  const byte RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
@@ -127,29 +146,12 @@
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
   #define BRAKE_MOTOR1  255
-#endif
-
-//********************************
-// Tank T-34/85 3ch
-//********************************
-#if defined(SERVO_10CH_MOTOR1_2PB)
-  const byte address[6] = "jirka";
-  #define RF_CHANNEL  76
-  #define BATTERY_VOLTAGE  4.2
-  #define MONITORED_VOLTAGE  3.45
-  #define SERVO_CHANNELS  1
-  // Motor 1
-  #define TIMER2_122HZ
-  #define REACTION_MOTOR1  0
-  #define MAX_FORWARD_MOTOR1  255
-  #define MAX_REVERSE_MOTOR1  255
-  #define BRAKE_MOTOR1  0
   // Motor 2 ATmega328PB
   #define TIMER4_122HZ
   #define REACTION_MOTOR2  0
   #define MAX_FORWARD_MOTOR2  255
   #define MAX_REVERSE_MOTOR2  255
-  #define BRAKE_MOTOR2  0
+  #define BRAKE_MOTOR2  255
 #endif
 
 //*********************************************************************************************************************

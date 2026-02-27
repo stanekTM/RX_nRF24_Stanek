@@ -19,36 +19,11 @@ void servo_setup()
 //*********************************************************************************************************************
 void servo_control()
 {
-#if defined(SERVO_12CH)
+#if defined(SERVO_12CH) || defined(SERVO_12CH_MOTOR1) || defined(SERVO_10CH_MOTOR1_2PB)
   for (byte i = 0; i < SERVO_CHANNELS; i++)
   {
-    servo[i].writeMicroseconds(rc_packet[i]);
+    servo[i].writeMicroseconds(rc_packet[MOTOR_CHANNELS + i]);
   }
 #endif
-
-#if defined(SERVO_12CH_MOTOR1)
-  for (byte i = 0; i < SERVO_CHANNELS; i++)
-  {
-    servo[i].writeMicroseconds(rc_packet[i + 1]);
-  }
-#endif
-
-#if defined(SERVO_10CH_MOTOR1_2PB)
-  for (byte i = 0; i < SERVO_CHANNELS; i++)
-  {
-    servo[i].writeMicroseconds(rc_packet[i + 2]);
-  }
-#endif
-}
-
-//*********************************************************************************************************************
-// Fail-safe center/neutral position of servo and motor 1500
-//*********************************************************************************************************************
-void fail_safe()
-{
-  for (byte i = 0; i < rc_channels; i++)
-  {
-    rc_packet[i] = 1500;
-  }
 }
  

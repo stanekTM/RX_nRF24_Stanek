@@ -6,7 +6,7 @@ void LED_mode()
 {
   if (millis() - rf_timeout > 1000) // If we lose RF data for 1 second, the LED blink at 0.1s interval
   {
-    fail_safe();
+    load_fail_safe();
     
     blink(PIN_LED, 100);
   }

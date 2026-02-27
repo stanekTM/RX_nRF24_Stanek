@@ -30,6 +30,7 @@ The code is Arduino.
 * Setting the maximum motor power. Suitable for RC transmitters without endpoint setting
 * Brake setting
 * Pin settings specific to my [PCB](documents/2micro_rx_layout.png)
+* Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral)
 
 ### LED mode
 * Normal mode, LED is lit
@@ -53,6 +54,7 @@ D11 - servo 10 motor 1/2
 D12 - servo 11 (11)(9)
 D13 - servo 12 (12)(10)
 
+A5  - fail-safe button
 A6  - LED
 A7  - telemetry analog input RX battery
 
