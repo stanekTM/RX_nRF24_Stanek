@@ -36,6 +36,7 @@ The code is Arduino.
 * Normal mode, LED is lit
 * If the RC receiver battery is low, the LED blink at 0.3s interval
 * If we lose RF data for 1 second, the LED blink at 0.1s interval (fail-safe)
+* If we save the fail-safe state, the LED blink at 0.5s interval
 
 ### Arduino pins
 ```
