@@ -21,6 +21,7 @@
 #include <DigitalIO.h> // v1.0.1
 #include <Servo.h>     // v1.2.2
 #include <EEPROM.h>
+#include "LED.h"
 #include "PWM.h"
 #include "Pins.h"
 #include "Config.h"
@@ -62,7 +63,5 @@ void loop()
   batt_monitoring();
   
   save_fail_safe();
-  
-  LED_mode();
 }
  

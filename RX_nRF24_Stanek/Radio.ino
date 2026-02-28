@@ -25,6 +25,7 @@ void radio_setup()
 //*********************************************************************************************************************
 unsigned int packet_counter = 0;
 unsigned long packet_time = 0;
+unsigned long rf_timeout = 0;
 
 void send_and_receive_data()
 {
@@ -46,6 +47,22 @@ void send_and_receive_data()
     telemetry_packet.rssi = constrain(telemetry_packet.rssi, 0, 100);
     //Serial.println(packet_counter);
     packet_counter = 0;
+  }
+  
+  // If we lose RF data for 1 second, the LED blink at 0.1s interval
+  if (millis() - rf_timeout > 1000)
+  {
+    load_fail_safe();
+    
+    blink(PIN_LED, 100);
+  }
+  else if (low_batt) // If the battery is low, the LED blink at 0.3s interval
+  {
+    blink(PIN_LED, 300);
+  }
+  else
+  {
+    digitalWrite(PIN_LED, HIGH); // Normal mode, LED is lit
   }
 }
  

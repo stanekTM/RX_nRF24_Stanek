@@ -1,6 +1,6 @@
 
 //*********************************************************************************************************************
-// If the stored RC channel values ​​are out of range, load the mean value, otherwise load the fail-safe values
+// If the stored RC channel values ​​are out of range, load the mid value, otherwise load the fail-safe values
 //*********************************************************************************************************************
 void load_fail_safe()
 {
@@ -16,7 +16,7 @@ void load_fail_safe()
     }
   }
 
-// Safe motor channels to neutral
+// Safe motor channels to mid value
 #if defined(MOTOR1_2) || defined(MIX_TANK_MOTOR1_2) || defined(SERVO_12CH_MOTOR1) || defined(SERVO_10CH_MOTOR1_2PB)
   for (byte i = 0; i < MOTOR_CHANNELS; i++)
   {
@@ -31,17 +31,14 @@ void load_fail_safe()
 //*********************************************************************************************************************
 void save_fail_safe()
 {
-  for (byte i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not read motor channels
-  {
-    if (digitalRead(PIN_FAIL_SAFE) == LOW)
-    {
-      EEPROM.put(i * 2, rc_packet[i]);
-    }
-  }
-  
   while (digitalRead(PIN_FAIL_SAFE) == LOW)
   {
-    blink(PIN_LED, 500);
+    for (byte i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not save motor channels
+    {
+      EEPROM.put(i * 2, rc_packet[i]);
+      
+      blink(PIN_LED, 500);
+    }
   }
 }
  

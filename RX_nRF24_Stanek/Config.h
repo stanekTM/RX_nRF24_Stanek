@@ -42,7 +42,7 @@
   Brake setting, no brake 0, maximum brake 255
   BRAKE_MOTOR1, BRAKE_MOTOR2  0 to 255
   
-  Pin settings specific to my PCB.
+  Pin settings specific to my PCB https://github.com/stanekTM/RX_nRF24_Stanek/blob/master/documents/2micro_rx_layout.png
   PIN_LED
   
   Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral)
@@ -52,9 +52,9 @@
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
 //#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
-#define MOTOR1_2              // Buggy 1:32 2ch
+//#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
-//#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
+#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
 //#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
@@ -208,8 +208,6 @@ struct telemetry_packet_size
   byte batt_A2; // Not used yet
 };
 telemetry_packet_size telemetry_packet;
-
-unsigned long rf_timeout = 0;
 
 //*********************************************************************************************************************
 // Dead zone adjustment of poor quality RC transmitter pots for motor control
