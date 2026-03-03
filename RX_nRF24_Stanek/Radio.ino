@@ -4,7 +4,7 @@
 //*********************************************************************************************************************
 RF24 radio(PIN_CE, PIN_CSN); // Class driver
 
-const byte retry_delay = (rc_channels * 3) / 7;
+const uint8_t retry_delay = (rc_channels * 3) / 7;
 
 void radio_setup()
 {
@@ -23,17 +23,18 @@ void radio_setup()
 //*********************************************************************************************************************
 // Send and receive data
 //*********************************************************************************************************************
-unsigned int packet_counter = 0;
-unsigned long packet_time = 0;
-unsigned long rf_timeout = 0;
+uint16_t packet_counter = 0;
+uint32_t packet_time = 0;
+uint32_t rf_timeout = 0;
 
 void send_and_receive_data()
 {
   if (radio.available())
   {
-    radio.read(&rc_packet, rc_packet_size);
+    radio.read(&rc_packet, sizeof(rc_packet));
     
-    radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet_size));
+    //radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet_size));
+    radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet));
     
     packet_counter++;
     

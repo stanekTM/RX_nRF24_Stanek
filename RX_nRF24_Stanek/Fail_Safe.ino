@@ -4,7 +4,7 @@
 //*********************************************************************************************************************
 void load_fail_safe()
 {
-  for (byte i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not read motor channels
+  for (uint8_t i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not read motor channels
   {
     if (EEPROM.get(i * 2, rc_packet[i]) < MIN_CONTROL_VAL || EEPROM.get(i * 2, rc_packet[i]) > MAX_CONTROL_VAL)
     {
@@ -18,7 +18,7 @@ void load_fail_safe()
 
 // Safe motor channels to mid value
 #if defined(MOTOR1_2) || defined(MIX_TANK_MOTOR1_2) || defined(SERVO_12CH_MOTOR1) || defined(SERVO_10CH_MOTOR1_2PB)
-  for (byte i = 0; i < MOTOR_CHANNELS; i++)
+  for (uint8_t i = 0; i < MOTOR_CHANNELS; i++)
   {
     rc_packet[i] = MID_CONTROL_VAL;
   }
@@ -33,7 +33,7 @@ void save_fail_safe()
 {
   while (digitalRead(PIN_FAIL_SAFE) == LOW)
   {
-    for (byte i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not save motor channels
+    for (uint8_t i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not save motor channels
     {
       EEPROM.put(i * 2, rc_packet[i]);
       

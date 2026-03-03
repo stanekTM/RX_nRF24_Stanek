@@ -1,3 +1,4 @@
+#include <stdint.h>
 
 #ifndef __Config_h__
 #define __Config_h__
@@ -9,7 +10,7 @@
   RC receiver configuration manual. See examples below "Custom configuration"
   *****************************************************************************************************************************************
   Setting a unique address (5 bytes number or character). It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
-  const byte RF_address[6] = "jirka";
+  const uint8_t RF_address[6] = "jirka";
   
   RF channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
   RF_CHANNEL  0 to 125 (2.4GHz to 2.525GHz)
@@ -51,17 +52,17 @@
 //*********************************************************************************************************************
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
-//#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
+#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
 //#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
-#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
+//#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
 //#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
 // Glider Let L-13 Blanik 4ch
 //********************************
 #if defined(SERVO_12CH)
-  const byte RF_address[6] = "jirka";
+  const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
@@ -72,7 +73,7 @@
 // Buggy 1:32 2ch
 //********************************
 #if defined(MOTOR1_2)
-  const byte RF_address[6] = "jirka";
+  const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
@@ -95,7 +96,7 @@
 // Eachine Monster 2ch
 //********************************
 #if defined(MIX_TANK_MOTOR1_2)
-  const byte RF_address[6] = "jirka";
+  const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
@@ -118,7 +119,7 @@
 // Ferari F-40 2ch
 //********************************
 #if defined(SERVO_12CH_MOTOR1)
-  const byte RF_address[6] = "jirka";
+  const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
@@ -135,11 +136,11 @@
 // Tank T-34/85 3ch
 //********************************
 #if defined(SERVO_10CH_MOTOR1_2PB)
-  const byte RF_address[6] = "jirka";
+  const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  #define SERVO_CHANNELS  1
+  #define SERVO_CHANNELS  10
   // Motor 1
   #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
@@ -193,21 +194,18 @@
 // Config radio
 //*********************************************************************************************************************
 // Received data array (max. 32 bytes)
-const byte rc_channels = SERVO_CHANNELS + MOTOR_CHANNELS;
+const uint8_t rc_channels = SERVO_CHANNELS + MOTOR_CHANNELS;
 
-unsigned int rc_packet[rc_channels] = {1500};
-
-// For one control channel with a value of 1000 to 2000 we need 2 bytes(packets)
-const byte rc_packet_size = rc_channels * 2;
+uint16_t rc_packet[rc_channels] = {1500};
 
 // Structure of sent ACK data
-struct telemetry_packet_size
+struct telemetry_packet
 {
-  byte rssi;
-  byte batt_A1 = 255;
-  byte batt_A2; // Not used yet
-};
-telemetry_packet_size telemetry_packet;
+  uint8_t rssi;
+  uint8_t batt_A1 = 255;
+  uint8_t batt_A2; // Not used yet
+}
+telemetry_packet;
 
 //*********************************************************************************************************************
 // Dead zone adjustment of poor quality RC transmitter pots for motor control

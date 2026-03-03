@@ -42,7 +42,7 @@ void motor_control()
 // Motor 1
 //*****************
 #if defined(MOTOR1)
-  int motor1_val = 0;
+  uint16_t motor1_val = 0;
   
   // Forward motor 1
   if (rc_packet[0] > MID_CONTROL_VAL + DEAD_ZONE)
@@ -71,7 +71,7 @@ void motor_control()
 // Motor 2
 //*****************
 #if defined(MOTOR2)
-  int motor2_val = 0;
+  uint16_t motor2_val = 0;
   
   // Forward motor 2
   if (rc_packet[1] > MID_CONTROL_VAL + DEAD_ZONE)
@@ -100,7 +100,7 @@ void motor_control()
 // Motor 2 ATmega328PB
 //*********************
 #if defined(MOTOR2PB)
-  int motor2_val = 0;
+  uint16_t motor2_val = 0;
   
   // Forward motor 2
   if (rc_packet[1] > MID_CONTROL_VAL + DEAD_ZONE)
@@ -129,12 +129,12 @@ void motor_control()
 // Motor 1 and 2 mixed "tank-arcade"
 //***********************************
 #if defined(MIX_TANK_MOTOR1_2)
-  int motor1_val = 0, motor2_val = 0;
-  int calc_mix = 258;
+  uint16_t motor1_val = 0, motor2_val = 0;
+  uint16_t calc_mix = 258;
   
-  int ch1 = rc_packet[0] / 2, ch2 = rc_packet[1] / 2;
-  int mix1 = ch1 - ch2 + 1500;
-  int mix2 = ch1 + ch2;
+  uint16_t ch1 = rc_packet[0] / 2, ch2 = rc_packet[1] / 2;
+  uint16_t mix1 = ch1 - ch2 + 1500;
+  uint16_t mix2 = ch1 + ch2;
   //Serial.println(mix1);
   
   // Forward motor 1
