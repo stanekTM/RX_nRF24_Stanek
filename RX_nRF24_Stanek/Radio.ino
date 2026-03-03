@@ -33,7 +33,6 @@ void send_and_receive_data()
   {
     radio.read(&rc_packet, sizeof(rc_packet));
     
-    //radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet_size));
     radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet));
     
     packet_counter++;

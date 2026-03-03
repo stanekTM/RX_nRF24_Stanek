@@ -3,6 +3,7 @@
 #define __Pins_h__
 
 #include <Arduino.h>
+#include <stdint.h>
 #include "Config.h"
 
 //*****************************
