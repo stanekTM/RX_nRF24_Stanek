@@ -52,11 +52,11 @@
 //*********************************************************************************************************************
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
-#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
+//#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
 //#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
 //#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
-//#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
+#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
 // Glider Let L-13 Blanik 4ch
