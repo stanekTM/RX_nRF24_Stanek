@@ -11,7 +11,7 @@
 uint32_t led_time = 0;
 bool led_state = 0;
 
-void blink(uint8_t pin, uint16_t interval)
+void blink(const uint8_t pin, uint16_t interval)
 {
   if (millis() - led_time > interval)
   {
