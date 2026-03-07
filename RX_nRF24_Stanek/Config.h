@@ -29,7 +29,7 @@
   SERVO_12CH_MOTOR1      Motor 1 and servo output (1 to 12 servo channels)
   SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (0 to 10 servo channels)
   
-  Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM" file
+  Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM.h" file
   30HZ to 62500HZ
   
   Setting the motor reaction point. Prevents initial rotor magnetic resistance
