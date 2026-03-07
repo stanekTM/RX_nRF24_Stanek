@@ -31,7 +31,8 @@ void send_and_receive_data()
 {
   if (radio.available())
   {
-    radio.read(&rc_packet, sizeof(rc_packet));
+    radio.read(&rc_packet, radio.getDynamicPayloadSize());
+    //Serial.println(radio.getDynamicPayloadSize());
     
     radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet));
     

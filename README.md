@@ -24,7 +24,7 @@ The code is Arduino.
 * Setting the maximum nominal battery voltage
 * Setting the minimum battery voltage for alarm
 * Servo and motor output selection
-* Setting the number of servo channels
+  The number of channels for servos and motors is determined by the number of RC channels of the transmitter (min. 2)
 * Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM" file
 * Setting the motor reaction point. Prevents initial rotor magnetic resistance
 * Setting the maximum motor power. Suitable for RC transmitters without endpoint setting

@@ -21,15 +21,13 @@
   Setting the minimum battery voltage for alarm
   MONITORED_VOLTAGE  < 4.2
   
-  Servo and motor output selection
+  Servo and motor output selection.
+  The number of channels for servos and motors is determined by the number of RC channels of the transmitter (min. 2)
   SERVO_12CH             Separate servo outputs (2 to 12 servo channels)
   MOTOR1_2               Motor output 1 and 2
   MIX_TANK_MOTOR1_2      "Tank-arcade" mix of motor 1 and 2
   SERVO_12CH_MOTOR1      Motor 1 and servo output (1 to 12 servo channels)
-  SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (1 to 10 servo channels)
-  
-  Setting the number of servo channels
-  SERVO_CHANNELS  1 to 12
+  SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (0 to 10 servo channels)
   
   Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM" file
   30HZ to 62500HZ
@@ -52,11 +50,11 @@
 //*********************************************************************************************************************
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
-//#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
+#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
 //#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
 //#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
-#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
+//#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
 // Glider Let L-13 Blanik 4ch
@@ -66,7 +64,6 @@
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  #define SERVO_CHANNELS  4
 #endif
 
 //********************************
@@ -75,9 +72,9 @@
 #if defined(MOTOR1_2)
   const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
-  #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
+  #define PIN_LED  2
   // Motor 1
   #define TIMER2_488HZ_DEFAULT
   #define REACTION_MOTOR1  0
@@ -98,9 +95,9 @@
 #if defined(MIX_TANK_MOTOR1_2)
   const uint8_t RF_address[6] = "jirka";
   #define RF_CHANNEL  76
-  #define PIN_LED  2
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
+  #define PIN_LED  2
   // Motor 1
   #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
@@ -123,13 +120,12 @@
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  #define SERVO_CHANNELS  1
   // Motor 1
   #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
   #define MAX_FORWARD_MOTOR1  255
   #define MAX_REVERSE_MOTOR1  255
-  #define BRAKE_MOTOR1  0
+  #define BRAKE_MOTOR1  255
 #endif
 
 //********************************
@@ -140,7 +136,6 @@
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
-  #define SERVO_CHANNELS  10
   // Motor 1
   #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
@@ -156,8 +151,12 @@
 #endif
 
 //*********************************************************************************************************************
-// Number of RC motor channels
+// The number of channels for servos and motors is determined by the number of RC channels of the transmitter (min. 2)
 //*********************************************************************************************************************
+#if defined(SERVO_12CH)
+  #define SERVO_CHANNELS  12
+#endif
+
 #if defined(MOTOR1_2)
   #define MOTOR_CHANNELS  2
   #define MOTOR1
@@ -170,11 +169,13 @@
 
 #if defined(SERVO_12CH_MOTOR1)
   #define MOTOR_CHANNELS  1
+  #define SERVO_CHANNELS  12
   #define MOTOR1
 #endif
 
 #if defined(SERVO_10CH_MOTOR1_2PB)
   #define MOTOR_CHANNELS  2
+  #define SERVO_CHANNELS  10
   #define MOTOR1
   #define MOTOR2PB
 #endif
@@ -194,7 +195,7 @@
 // Config radio
 //*********************************************************************************************************************
 // Received data array (max. 32 bytes)
-const uint8_t rc_channels = SERVO_CHANNELS + MOTOR_CHANNELS;
+const uint8_t rc_channels = MOTOR_CHANNELS + SERVO_CHANNELS;
 
 uint16_t rc_packet[rc_channels] = {1500};
 
