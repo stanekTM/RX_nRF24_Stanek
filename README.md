@@ -19,8 +19,8 @@ The code is Arduino.
 * Working current of the motor driver MX1508: 1.5A (peak current up to 2.5A)
 
 ### RC receiver configuration manual in the "Config.h" file
-* Setting a unique address. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
-* RF channel setting. It is hardcoded into the firmware of RC transmitter openAVRc and Multiprotocol TX
+* Setting a unique address. It is hardcoded into the firmware of RC transmitter OpenAVRc and Multiprotocol TX
+* RF channel setting. It is hardcoded into the firmware of RC transmitter OpenAVRc and Multiprotocol TX
 * Setting the maximum nominal battery voltage
 * Setting the minimum battery voltage for alarm
 * Servo and motor output selection.
@@ -30,7 +30,8 @@ The code is Arduino.
 * Setting the maximum motor power. Suitable for RC transmitters without endpoint setting
 * Brake setting
 * Pin settings specific to my [PCB](documents/2micro_rx_layout.png)
-* Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral)
+* Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral).
+  The setting is done by connecting pin A5 to GND or from a Multiprotocol TX transmitter (later also OpenAVRc)
 
 ### LED mode
 * Normal mode, LED is lit

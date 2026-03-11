@@ -4,15 +4,13 @@
 //*********************************************************************************************************************
 RF24 radio(PIN_CE, PIN_CSN); // Class driver
 
-const uint8_t retry_delay = (rc_channels * 3) / 7;
-
 void radio_setup()
 {
   radio.begin();
   radio.setAutoAck(1);
   radio.enableAckPayload();
   radio.enableDynamicPayloads();
-  radio.setRetries(retry_delay, 0);
+  radio.setRetries(0, 0);
   radio.setChannel(RF_CHANNEL);
   radio.setDataRate(RF24_250KBPS);
   radio.setPALevel(RF24_PA_MIN); // RF24_PA_MIN (-18dBm), RF24_PA_LOW (-12dBm), RF24_PA_HIGH (-6dbm), RF24_PA_MAX (0dBm)
@@ -31,10 +29,9 @@ void send_and_receive_data()
 {
   if (radio.available())
   {
-    radio.read(&rc_packet, radio.getDynamicPayloadSize());
-    //Serial.println(radio.getDynamicPayloadSize());
-    
     radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet));
+    
+    radio.read(&rx_packet, radio.getDynamicPayloadSize());
     
     packet_counter++;
     
@@ -44,14 +41,13 @@ void send_and_receive_data()
   if (millis() - packet_time > 1000)
   {
     packet_time = millis();
-    telemetry_packet.rssi = map(packet_counter, 283, 294, 0, 100);
+    telemetry_packet.rssi = map(packet_counter, 322, 333, 0, 100);
     telemetry_packet.rssi = constrain(telemetry_packet.rssi, 0, 100);
     //Serial.println(packet_counter);
     packet_counter = 0;
   }
   
-  // If we lose RF data for 1 second, the LED blink at 0.1s interval
-  if (millis() - rf_timeout > 1000)
+  if (millis() - rf_timeout > 1000) // If we lose RF data for 1 second, Fail-safe loaded and the LED blink at 0.1s interval
   {
     load_fail_safe();
     
@@ -60,6 +56,10 @@ void send_and_receive_data()
   else if (low_batt) // If the battery is low, the LED blink at 0.3s interval
   {
     blink(PIN_LED, 300);
+  }
+  else if (fail_safe_led) // If you are saving fail-safe, the LED blink at 0.5s interval
+  {
+    blink(PIN_LED, 500);
   }
   else
   {

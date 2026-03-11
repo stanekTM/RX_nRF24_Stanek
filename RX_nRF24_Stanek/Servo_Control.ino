@@ -22,7 +22,7 @@ void servo_control()
 #if defined(SERVO_12CH) || defined(SERVO_12CH_MOTOR1) || defined(SERVO_10CH_MOTOR1_2PB)
   for (uint8_t i = 0; i < SERVO_CHANNELS; i++)
   {
-    servo[i].writeMicroseconds(rc_packet[MOTOR_CHANNELS + i]);
+    servo[i].writeMicroseconds(rx_packet.rc_data[MOTOR_CHANNELS + i]);
   }
 #endif
 }

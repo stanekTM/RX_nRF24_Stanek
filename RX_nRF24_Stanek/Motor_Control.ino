@@ -45,17 +45,17 @@ void motor_control()
   int16_t motor1_val = 0;
   
   // Forward motor 1
-  if (rc_packet[0] > MID_CONTROL_VAL + DEAD_ZONE)
+  if (rx_packet.rc_data[0] > MID_CONTROL_VAL + DEAD_ZONE)
   {
-    motor1_val = map(rc_packet[0], MID_CONTROL_VAL + DEAD_ZONE, MAX_CONTROL_VAL, REACTION_MOTOR1, MAX_FORWARD_MOTOR1);
+    motor1_val = map(rx_packet.rc_data[0], MID_CONTROL_VAL + DEAD_ZONE, MAX_CONTROL_VAL, REACTION_MOTOR1, MAX_FORWARD_MOTOR1);
     motor1_val = constrain(motor1_val, REACTION_MOTOR1, MAX_FORWARD_MOTOR1);
     analogWrite(pins_motor1[1], motor1_val);
     digitalWrite(pins_motor1[0], LOW);
   }
   // Reverse motor 1
-  else if (rc_packet[0] < MID_CONTROL_VAL - DEAD_ZONE)
+  else if (rx_packet.rc_data[0] < MID_CONTROL_VAL - DEAD_ZONE)
   {
-    motor1_val = map(rc_packet[0], MID_CONTROL_VAL - DEAD_ZONE, MIN_CONTROL_VAL, REACTION_MOTOR1, MAX_REVERSE_MOTOR1);
+    motor1_val = map(rx_packet.rc_data[0], MID_CONTROL_VAL - DEAD_ZONE, MIN_CONTROL_VAL, REACTION_MOTOR1, MAX_REVERSE_MOTOR1);
     motor1_val = constrain(motor1_val, REACTION_MOTOR1, MAX_REVERSE_MOTOR1);
     analogWrite(pins_motor1[0], motor1_val);
     digitalWrite(pins_motor1[1], LOW);
@@ -74,17 +74,17 @@ void motor_control()
   int16_t motor2_val = 0;
   
   // Forward motor 2
-  if (rc_packet[1] > MID_CONTROL_VAL + DEAD_ZONE)
+  if (rx_packet.rc_data[1] > MID_CONTROL_VAL + DEAD_ZONE)
   {
-    motor2_val = map(rc_packet[1], MID_CONTROL_VAL + DEAD_ZONE, MAX_CONTROL_VAL, REACTION_MOTOR2, MAX_FORWARD_MOTOR2);
+    motor2_val = map(rx_packet.rc_data[1], MID_CONTROL_VAL + DEAD_ZONE, MAX_CONTROL_VAL, REACTION_MOTOR2, MAX_FORWARD_MOTOR2);
     motor2_val = constrain(motor2_val, REACTION_MOTOR2, MAX_FORWARD_MOTOR2);
     analogWrite(pins_motor2[1], motor2_val);
     digitalWrite(pins_motor2[0], LOW);
   }
   // Reverse motor 2
-  else if (rc_packet[1] < MID_CONTROL_VAL - DEAD_ZONE)
+  else if (rx_packet.rc_data[1] < MID_CONTROL_VAL - DEAD_ZONE)
   {
-    motor2_val = map(rc_packet[1], MID_CONTROL_VAL - DEAD_ZONE, MIN_CONTROL_VAL, REACTION_MOTOR2, MAX_REVERSE_MOTOR2);
+    motor2_val = map(rx_packet.rc_data[1], MID_CONTROL_VAL - DEAD_ZONE, MIN_CONTROL_VAL, REACTION_MOTOR2, MAX_REVERSE_MOTOR2);
     motor2_val = constrain(motor2_val, REACTION_MOTOR2, MAX_REVERSE_MOTOR2);
     analogWrite(pins_motor2[0], motor2_val);
     digitalWrite(pins_motor2[1], LOW);
@@ -103,17 +103,17 @@ void motor_control()
   int16_t motor2_val = 0;
   
   // Forward motor 2
-  if (rc_packet[1] > MID_CONTROL_VAL + DEAD_ZONE)
+  if (rx_packet.rc_data[1] > MID_CONTROL_VAL + DEAD_ZONE)
   {
-    motor2_val = map(rc_packet[1], MID_CONTROL_VAL + DEAD_ZONE, MAX_CONTROL_VAL, REACTION_MOTOR2, MAX_FORWARD_MOTOR2);
+    motor2_val = map(rx_packet.rc_data[1], MID_CONTROL_VAL + DEAD_ZONE, MAX_CONTROL_VAL, REACTION_MOTOR2, MAX_FORWARD_MOTOR2);
     motor2_val = constrain(motor2_val, REACTION_MOTOR2, MAX_FORWARD_MOTOR2);
     analogWrite(pins_motor2PB[1], motor2_val);
     digitalWrite(pins_motor2PB[0], LOW);
   }
   // Reverse motor 2
-  else if (rc_packet[1] < MID_CONTROL_VAL - DEAD_ZONE)
+  else if (rx_packet.rc_data[1] < MID_CONTROL_VAL - DEAD_ZONE)
   {
-    motor2_val = map(rc_packet[1], MID_CONTROL_VAL - DEAD_ZONE, MIN_CONTROL_VAL, REACTION_MOTOR2, MAX_REVERSE_MOTOR2);
+    motor2_val = map(rx_packet.rc_data[1], MID_CONTROL_VAL - DEAD_ZONE, MIN_CONTROL_VAL, REACTION_MOTOR2, MAX_REVERSE_MOTOR2);
     motor2_val = constrain(motor2_val, REACTION_MOTOR2, MAX_REVERSE_MOTOR2);
     analogWrite(pins_motor2PB[0], motor2_val);
     digitalWrite(pins_motor2PB[1], LOW);
@@ -132,7 +132,7 @@ void motor_control()
   int16_t motor1_val = 0, motor2_val = 0;
   uint16_t calc_mix = 258;
   
-  uint16_t ch1 = rc_packet[0] / 2, ch2 = rc_packet[1] / 2;
+  uint16_t ch1 = rx_packet.rc_data[0] / 2, ch2 = rx_packet.rc_data[1] / 2;
   uint16_t mix1 = ch1 - ch2 + 1500;
   uint16_t mix2 = ch1 + ch2;
   //Serial.println(mix1);

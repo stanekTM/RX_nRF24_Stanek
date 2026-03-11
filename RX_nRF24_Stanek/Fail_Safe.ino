@@ -6,39 +6,42 @@ void load_fail_safe()
 {
   for (uint8_t i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not read motor channels
   {
-    if (EEPROM.get(i * 2, rc_packet[i]) < MIN_CONTROL_VAL || EEPROM.get(i * 2, rc_packet[i]) > MAX_CONTROL_VAL)
+    if (EEPROM.get(i * 2, rx_packet.rc_data[i]) < MIN_CONTROL_VAL || EEPROM.get(i * 2, rx_packet.rc_data[i]) > MAX_CONTROL_VAL)
     {
-      rc_packet[i] = MID_CONTROL_VAL;
+      rx_packet.rc_data[i] = MID_CONTROL_VAL;
     }
     else
     {
-      EEPROM.get(i * 2, rc_packet[i]);
+      EEPROM.get(i * 2, rx_packet.rc_data[i]);
     }
   }
-
+  
 // Safe motor channels to mid value
 #if defined(MOTOR1_2) || defined(MIX_TANK_MOTOR1_2) || defined(SERVO_12CH_MOTOR1) || defined(SERVO_10CH_MOTOR1_2PB)
   for (uint8_t i = 0; i < MOTOR_CHANNELS; i++)
   {
-    rc_packet[i] = MID_CONTROL_VAL;
+    rx_packet.rc_data[i] = MID_CONTROL_VAL;
   }
-#endif 
-  //Serial.println(rc_packet[0]);
+#endif
 }
 
 //*********************************************************************************************************************
 // Save fail-safe
 //*********************************************************************************************************************
+bool fail_safe_led = 0;
+
 void save_fail_safe()
 {
-  while (digitalRead(PIN_FAIL_SAFE) == LOW)
+  if ((digitalRead(PIN_FAIL_SAFE) == LOW) || rx_packet.fail_safe_flag)
   {
+    fail_safe_led = 1;
+
     for (uint8_t i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not save motor channels
     {
-      EEPROM.put(i * 2, rc_packet[i]);
-      
-      blink(PIN_LED, 500);
+      EEPROM.put(i * 2, rx_packet.rc_data[i]);
     }
   }
+  else
+  fail_safe_led = 0;
 }
  
