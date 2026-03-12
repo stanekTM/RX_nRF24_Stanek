@@ -6,43 +6,45 @@
 #include <stdint.h>
 
 /*
-  *****************************************************************************************************************************************
+  ***************************************************************************************************************************
   RC receiver configuration manual. See examples below "Custom configuration"
-  *****************************************************************************************************************************************
-  Setting a unique address (5 bytes number or character). It is hardcoded into the firmware of RC transmitter OpenAVRc and Multiprotocol TX
-  const uint8_t RF_address[6] = "jirka";
+  ***************************************************************************************************************************
+  Setting a unique address (5 bytes number or character).
+  It is hardcoded into the firmware of RC transmitter OpenAVRc and my TX Multiprotocol Stanek
+  - const uint8_t RF_address[6] = "jirka";
   
-  RF channel setting. It is hardcoded into the firmware of RC transmitter OpenAVRc and Multiprotocol TX
-  RF_CHANNEL  0 to 125 (2.4GHz to 2.525GHz)
+  RF channel setting.
+  It is hardcoded into the firmware of RC transmitter OpenAVRc and my TX Multiprotocol Stanek
+  - RF_CHANNEL  0 to 125 (2.4GHz to 2.525GHz)
   
   Setting the maximum nominal battery voltage
-  BATTERY_VOLTAGE  4.2
+  - BATTERY_VOLTAGE  4.2
   
   Setting the minimum battery voltage for alarm
-  MONITORED_VOLTAGE  < 4.2
+  - MONITORED_VOLTAGE  < 4.2
   
   Servo and motor output selection.
   The number of channels for servos and motors is determined by the number of RC channels of the transmitter (min. 2)
-  SERVO_12CH             Separate servo outputs (2 to 12 servo channels)
-  MOTOR1_2               Motor output 1 and 2
-  MIX_TANK_MOTOR1_2      "Tank-arcade" mix of motor 1 and 2
-  SERVO_12CH_MOTOR1      Motor 1 and servo output (1 to 12 servo channels)
-  SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (0 to 10 servo channels)
+  - SERVO_12CH             Separate servo outputs (2 to 12 servo channels)
+  - MOTOR1_2               Motor output 1 and 2
+  - MIX_TANK_MOTOR1_2      "Tank-arcade" mix of motor 1 and 2
+  - SERVO_12CH_MOTOR1      Motor 1 and servo output (1 to 12 servo channels)
+  - SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (0 to 10 servo channels)
   
   Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM.h" file
-  30HZ to 62500HZ
+  - 30HZ to 62500HZ
   
   Setting the motor reaction point. Prevents initial rotor magnetic resistance
-  REACTION_MOTOR1, REACTION_MOTOR2  0 to 255
+  - REACTION_MOTOR1, REACTION_MOTOR2  0 to 255
   
   Setting the maximum motor power. Suitable for RC transmitters without endpoint setting
-  MAX_FORWARD_MOTOR1, MAX_REVERSE_MOTOR1, MAX_FORWARD_MOTOR2, MAX_REVERSE_MOTOR2  0 to 255
+  - MAX_FORWARD_MOTOR1, MAX_REVERSE_MOTOR1, MAX_FORWARD_MOTOR2, MAX_REVERSE_MOTOR2  0 to 255
   
   Brake setting, no brake 0, maximum brake 255
-  BRAKE_MOTOR1, BRAKE_MOTOR2  0 to 255
+  - BRAKE_MOTOR1, BRAKE_MOTOR2  0 to 255
   
   Pin settings specific to my PCB https://github.com/stanekTM/RX_nRF24_Stanek/blob/master/documents/2micro_rx_layout.png
-  PIN_LED
+  - PIN_LED
   
   Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral).
   The setting is done by connecting pin A5 to GND or from a Multiprotocol TX transmitter (later also OpenAVRc)
