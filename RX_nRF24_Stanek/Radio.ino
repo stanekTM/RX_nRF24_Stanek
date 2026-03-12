@@ -63,7 +63,7 @@ void send_and_receive_data()
   }
   else
   {
-    digitalWrite(PIN_LED, HIGH); // Normal mode, LED is lit
+    digitalWrite(PIN_LED, HIGH); // Data reception, LED is lit
   }
 }
  
