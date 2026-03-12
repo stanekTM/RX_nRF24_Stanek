@@ -29,7 +29,7 @@ void send_and_receive_data()
 {
   if (radio.available())
   {
-    radio.writeAckPayload(1, &telemetry_packet, sizeof(telemetry_packet));
+    radio.writeAckPayload(1, &tx_ack_packet, sizeof(tx_ack_packet));
     
     radio.read(&rx_packet, radio.getDynamicPayloadSize());
     
@@ -41,8 +41,8 @@ void send_and_receive_data()
   if (millis() - packet_time > 1000)
   {
     packet_time = millis();
-    telemetry_packet.rssi = map(packet_counter, 322, 333, 0, 100);
-    telemetry_packet.rssi = constrain(telemetry_packet.rssi, 0, 100);
+    tx_ack_packet.rssi = map(packet_counter, 322, 333, 0, 100);
+    tx_ack_packet.rssi = constrain(tx_ack_packet.rssi, 0, 100);
     //Serial.println(packet_counter);
     packet_counter = 0;
   }
@@ -57,7 +57,7 @@ void send_and_receive_data()
   {
     blink(PIN_LED, 300);
   }
-  else if (fail_safe_led) // If you are saving fail-safe, the LED blink at 0.5s interval
+  else if (rx_packet.fail_safe_flag) // If you are saving fail-safe, the LED blink at 0.5s interval
   {
     blink(PIN_LED, 500);
   }

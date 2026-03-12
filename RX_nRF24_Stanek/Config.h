@@ -208,13 +208,13 @@ struct rx_packet
 rx_packet;
 
 // Structure of sent ACK data
-struct telemetry_packet
+struct tx_ack_packet
 {
   uint8_t rssi;
   uint8_t batt_A1 = 255;
   uint8_t batt_A2; // Not used yet
 }
-telemetry_packet;
+tx_ack_packet;
 
 //*********************************************************************************************************************
 // Dead zone adjustment of poor quality RC transmitter pots for motor control

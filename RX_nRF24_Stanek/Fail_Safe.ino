@@ -28,20 +28,14 @@ void load_fail_safe()
 //*********************************************************************************************************************
 // Save fail-safe
 //*********************************************************************************************************************
-bool fail_safe_led = 0;
-
 void save_fail_safe()
 {
   if ((digitalRead(PIN_FAIL_SAFE) == LOW) || rx_packet.fail_safe_flag)
   {
-    fail_safe_led = 1;
-
     for (uint8_t i = MOTOR_CHANNELS; i < rc_channels; i++) // Does not save motor channels
     {
       EEPROM.put(i * 2, rx_packet.rc_data[i]);
     }
   }
-  else
-  fail_safe_led = 0;
 }
  

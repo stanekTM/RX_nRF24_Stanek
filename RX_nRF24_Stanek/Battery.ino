@@ -12,9 +12,9 @@ void batt_monitoring()
   {
     adc_time = millis();
     
-    telemetry_packet.batt_A1 = map(analogRead(PIN_BATTERY), 0, 1023, 0, 255);
+    tx_ack_packet.batt_A1 = map(analogRead(PIN_BATTERY), 0, 1023, 0, 255);
     
-    low_batt = telemetry_packet.batt_A1 <= (255 / BATTERY_VOLTAGE) * MONITORED_VOLTAGE;
+    low_batt = tx_ack_packet.batt_A1 <= (255 / BATTERY_VOLTAGE) * MONITORED_VOLTAGE;
   }
   
   // Battery alarm lock
