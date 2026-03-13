@@ -31,7 +31,7 @@ The code is Arduino.
 * Brake setting
 * Pin settings specific to my [PCB](documents/2micro_rx_layout.png)
 * Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral).
-  The setting is done by connecting pin A5 to GND or from a my Multiprotocol TX transmitter (later also OpenAVRc)
+  The setting is done by connecting pin A5 to GND or from a my Multiprotocol TX forks (later also OpenAVRc)
 
 ### LED mode
 * Data reception, LED is lit

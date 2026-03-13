@@ -10,11 +10,11 @@
   RC receiver configuration manual. See examples below "Custom configuration"
   ***************************************************************************************************************************
   Setting a unique address (5 bytes number or character).
-  It is hardcoded into the firmware of RC transmitter OpenAVRc and my Multiprotocol TX
+  It is hardcoded into the firmware of RC transmitter OpenAVRc and my Multiprotocol TX forks
   - const uint8_t RF_address[6] = "jirka";
   
   RF channel setting.
-  It is hardcoded into the firmware of RC transmitter OpenAVRc and my Multiprotocol TX
+  It is hardcoded into the firmware of RC transmitter OpenAVRc and my Multiprotocol TX forks
   - RF_CHANNEL  0 to 125 (2.4GHz to 2.525GHz)
   
   Setting the maximum nominal battery voltage
@@ -47,7 +47,7 @@
   - PIN_LED
   
   Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral).
-  The setting is done by connecting pin A5 to GND or from a my Multiprotocol TX transmitter (later also OpenAVRc)
+  The setting is done by connecting pin A5 to GND or from a my Multiprotocol TX forks (later also OpenAVRc)
 */
 
 //*********************************************************************************************************************
