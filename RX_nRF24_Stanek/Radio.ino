@@ -57,7 +57,7 @@ void send_and_receive_data()
   {
     blink(PIN_LED, 300);
   }
-  else if (rx_packet.fail_safe_flag) // If you are saving fail-safe, the LED blink at 0.5s interval
+  else if ((digitalRead(PIN_FAIL_SAFE) == LOW) || rx_packet.fail_safe_flag) // If you are saving fail-safe, the LED blink at 0.5s interval
   {
     blink(PIN_LED, 500);
   }
