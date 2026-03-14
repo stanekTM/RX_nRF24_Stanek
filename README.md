@@ -16,7 +16,7 @@ The code is Arduino.
 
 * [**Multiprotocol TX**](https://github.com/stanekTM/TX_Multiprotocol_Stanek) from my fork
 
-<a href="https://github.com/stanekTM/TX_Multiprotocol_Stanek"><img width="850" src="documents/opentx_multi_tx.png"></a>
+<a href="https://github.com/stanekTM/TX_Multiprotocol_Stanek"><img width="834" src="documents/opentx_multi_tx.png"></a>
 
 ### RC receiver specification
 * Operating Voltage: 3.3V - 6.0V (target typically 4.2V, 1S LiPo)
