@@ -12,11 +12,11 @@ The code is Arduino.
 * [**TX_nRF24_Xch_LED**](https://github.com/stanekTM/TX_nRF24_Xch_LED)
 * [**OpenAVRc**](https://github.com/Ingwie/OpenAVRc_Dev)
 
-<a href=https://github.com/Ingwie/OpenAVRc_Dev><img width=830 src=documents/openavrc.png></a>
+<a href=https://github.com/Ingwie/OpenAVRc_Dev><img width=800 src=documents/openavrc.png></a>
 
 * [**Multiprotocol TX**](https://github.com/stanekTM/TX_Multiprotocol_Stanek) from my fork
 
-<a href=https://github.com/stanekTM/TX_Multiprotocol_Stanek><img width=830 src=documents/opentx_multi_tx.png></a>
+<a href=https://github.com/stanekTM/TX_Multiprotocol_Stanek><img width=800 src=documents/opentx_multi_tx.png></a>
 
 ### RC receiver specification
 * Operating Voltage: 3.3V - 6.0V (target typically 4.2V, 1S LiPo)
