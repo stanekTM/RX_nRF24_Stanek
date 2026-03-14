@@ -12,7 +12,7 @@ The code is Arduino.
 * [**TX_nRF24_Xch_LED**](https://github.com/stanekTM/TX_nRF24_Xch_LED)
 * [**OpenAVRc**](https://github.com/Ingwie/OpenAVRc_Dev)
 
-<a href=https://github.com/Ingwie/OpenAVRc_Dev><img width=743 src=documents/openavrc.png></a>
+<a href=https://github.com/Ingwie/OpenAVRc_Dev><img width=744 src=documents/openavrc.png></a>
 
 * [**Multiprotocol TX**](https://github.com/stanekTM/TX_Multiprotocol_Stanek) from my fork
 
