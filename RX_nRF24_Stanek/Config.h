@@ -45,7 +45,7 @@
   - PIN_LED
   
   Setting fail-safe servo channels outside of motor channels (motor 1 and 2 fixed in neutral).
-  The setting is done by connecting pin A5 to GND or from the RC transmitter menu
+  The setting is done by connecting pin A5 to GND or from the RC transmitter menu (except TX_nRF24_2ch_OLED and TX_nRF24_Xch_LED)
 */
 
 //*********************************************************************************************************************
