@@ -21,13 +21,15 @@
   Setting the minimum battery voltage for alarm
   - MONITORED_VOLTAGE  < 4.2
   
-  Servo and motor output selection.
-  The number of channels for servos and motors is determined by the number of RC channels of the transmitter (min. 2)
+  Servo and motor output selection. Minimum 2 RC channels
   - SERVO_12CH             Separate servo outputs (2 to 12 servo channels)
   - MOTOR1_2               Motor output 1 and 2
   - MIX_TANK_MOTOR1_2      "Tank-arcade" mix of motor 1 and 2
   - SERVO_12CH_MOTOR1      Motor 1 and servo output (1 to 12 servo channels)
   - SERVO_10CH_MOTOR1_2PB  ATmega328PB only! Motor 1 and 2 and servo output (0 to 10 servo channels)
+  
+  The minimum and maximum number of servo channels is determined by the selection of servo and motor output, see above
+  - SERVO_CHANNELS  0 to 12
   
   Setting the PWM prescaler according to the requirements and limitations of the timers/counters. Details in the "PWM.h" file
   - 30HZ to 62500HZ
@@ -51,10 +53,10 @@
 //*********************************************************************************************************************
 // Custom configuration for a specific RC model
 //*********************************************************************************************************************
-#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
+//#define SERVO_12CH            // Glider Let L-13 Blanik 4ch
 //#define MOTOR1_2              // Buggy 1:32 2ch
 //#define MIX_TANK_MOTOR1_2     // Eachine Monster 2ch
-//#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
+#define SERVO_12CH_MOTOR1     // Ferari F-40 2ch
 //#define SERVO_10CH_MOTOR1_2PB // Tank T-34/85 3ch
 
 //********************************
@@ -65,6 +67,7 @@
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
+  #define SERVO_CHANNELS  4
 #endif
 
 //********************************
@@ -121,6 +124,7 @@
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
+  #define SERVO_CHANNELS  1
   // Motor 1
   #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
@@ -137,6 +141,7 @@
   #define RF_CHANNEL  76
   #define BATTERY_VOLTAGE  4.2
   #define MONITORED_VOLTAGE  3.45
+  #define SERVO_CHANNELS  1
   // Motor 1
   #define TIMER2_122HZ
   #define REACTION_MOTOR1  0
@@ -152,12 +157,8 @@
 #endif
 
 //*********************************************************************************************************************
-// The number of channels for servos and motors is determined by the number of RC channels of the transmitter (min. 2)
+// The number of channels for motors
 //*********************************************************************************************************************
-#if defined(SERVO_12CH)
-  #define SERVO_CHANNELS  12
-#endif
-
 #if defined(MOTOR1_2)
   #define MOTOR_CHANNELS  2
   #define MOTOR1
@@ -170,13 +171,11 @@
 
 #if defined(SERVO_12CH_MOTOR1)
   #define MOTOR_CHANNELS  1
-  #define SERVO_CHANNELS  12
   #define MOTOR1
 #endif
 
 #if defined(SERVO_10CH_MOTOR1_2PB)
   #define MOTOR_CHANNELS  2
-  #define SERVO_CHANNELS  10
   #define MOTOR1
   #define MOTOR2PB
 #endif
