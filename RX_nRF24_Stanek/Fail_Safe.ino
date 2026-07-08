@@ -40,8 +40,6 @@ void save_fail_safe()
       EEPROM.put(i * 2, rx_packet.rc_data[i]);
     }
     
-    digitalWrite(PIN_LED, HIGH);
-    
     rx_packet.fail_safe_flag = 0;
   }
   
