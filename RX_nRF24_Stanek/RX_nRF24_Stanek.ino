@@ -34,17 +34,23 @@ void setup()
   //Serial.begin(9600);
   //printf_begin(); // Print the radio debug info
   
+  pinMode(PIN_FAIL_SAFE, INPUT_PULLUP);
+  
+  pinMode(PIN_LED, OUTPUT);
+  pinMode(PIN_BATTERY, INPUT);
+  
+  // Safely set all RC channels to center (1500) immediately after launch
+  for (uint8_t i = 0; i < rc_channels; i++)
+  {
+    rx_packet.rc_data[i] = 1500;
+  }
+  
   radio_setup();
   
   load_fail_safe();
   
   servo_setup();
   motor_setup();
-  
-  pinMode(PIN_FAIL_SAFE, INPUT_PULLUP);
-  
-  pinMode(PIN_LED, OUTPUT);
-  pinMode(PIN_BATTERY, INPUT);
 }
 
 //*********************************************************************************************************************
