@@ -76,15 +76,15 @@
 #endif
 
 // Save fail-safe
-#define PIN_FAIL_SAFE  A5
+#define PIN_FAIL_SAFE  A7
 
 // LED alarm
 #ifndef PIN_LED
-  #define PIN_LED    A6
+  #define PIN_LED    A5
 #endif
 
 // Input battery
-#define PIN_BATTERY  A7
+#define PIN_BATTERY  A6
 
 // Pins for nRF24L01+
 #define PIN_CE       A0
